@@ -1,13 +1,14 @@
-package com.dio.heroesapi.service;
+package com.br.heroesapidio.service;
 
-import com.dio.heroesapi.document.Heroes;
-import com.dio.heroesapi.repository.HeroesRepository;
+import com.br.heroesapidio.document.Heroes;
+import com.br.heroesapidio.repository.HeroesRepository;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
 public class HeroesService {
+
     private final HeroesRepository heroesRepository;
 
     public HeroesService(HeroesRepository heroesRepository) {
@@ -18,7 +19,7 @@ public class HeroesService {
         return Flux.fromIterable(this.heroesRepository.findAll());
     }
 
-    public Mono<Heroes> findById(String id) {
+    public Mono<Heroes> findByIdHero(String id) {
         return Mono.justOrEmpty(this.heroesRepository.findById(id));
     }
 
@@ -29,4 +30,5 @@ public class HeroesService {
     public void deleteByIDHero(String id) {
         heroesRepository.deleteById(id);
     }
+
 }
